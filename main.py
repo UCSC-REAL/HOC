@@ -45,7 +45,7 @@ def forward_loss(output, target, trans_mat, index = None):
     # l_{forward}(y, h(x)) = l_{ce}(y, h(x) @ T)
     outputs = F.softmax(output, dim=1)
     if index is None:
-        outputs = torch.mm(outputs,trans_mat)
+        outputs = outputs @ trans_mat
     else:
         outputs1 = outputs.view(outputs.shape[0] * outputs.shape[1],-1).repeat(1,outputs.shape[1])
         T1 = trans_mat[index].view(outputs.shape[0] * trans_mat.shape[1], trans_mat.shape[2])
