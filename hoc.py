@@ -3,12 +3,8 @@ import torch
 
 
 def get_T_HOC(config, model, train_dataloader_EF, rnd, test_flag = False, max_step = 501, T0 = None, p0 = None, lr = 0.1):
-    if config.build_feat:
-        config.path, record, c1m_cluster_each = init_feature_set(config, model, train_dataloader_EF, rnd)
-        sub_clean_dataset_name, sub_noisy_dataset_name = build_dataset_informal(config, record, c1m_cluster_each)
-    else:
-        config.path = f'./data/{config.pre_type}_{config.dataset}_{config.label_file_path[7:-3]}.pt'
-        sub_noisy_dataset_name = f'{config.path[:-3]}_noisy.pt'
+    config.path, record, c1m_cluster_each = init_feature_set(config, model, train_dataloader_EF, rnd)
+    sub_clean_dataset_name, sub_noisy_dataset_name = build_dataset_informal(config, record, c1m_cluster_each)
 
     if test_flag:
         return 0, 0, 0
