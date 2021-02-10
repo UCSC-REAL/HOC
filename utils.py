@@ -7,8 +7,9 @@ import resnet_cifar as res_cifar_new
 import torch
 import random
 import math
-
-
+import torch.nn as nn
+import torchvision
+# import torchvision.transforms as transforms
 
 # numLocal = config.numLocal 
 # numNoisyGroup = config.numNoisyGroup
