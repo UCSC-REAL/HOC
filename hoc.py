@@ -1,6 +1,8 @@
 from utils import *
 import torch
-
+import resnet_image as res_image
+import resnet as res_cifar
+import resnet_cifar as res_cifar_new
 
 def get_T_HOC(config, model, train_dataloader_EF, rnd, test_flag = False, max_step = 501, T0 = None, p0 = None, lr = 0.1):
     if config.build_feat:

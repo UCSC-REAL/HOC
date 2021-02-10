@@ -1,7 +1,9 @@
 import numpy as np
 import torch.nn.functional as F
 import time
-
+import resnet_image as res_image
+import resnet as res_cifar
+import resnet_cifar as res_cifar_new
 import torch
 import random
 import math

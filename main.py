@@ -3,9 +3,7 @@ import torch.nn as nn
 import torchvision
 import torchvision.transforms as transforms
 import torch.nn.functional as F
-import resnet_image as res_image
-import resnet as res_cifar
-import resnet_cifar as res_cifar_new
+
 import argparse
 from data.cifar import CIFAR10, CIFAR100
 # from data.mnist import MNIST
@@ -16,8 +14,7 @@ import random
 import argparse
 import numpy as np
 import pickle
-from torch.utils.data import RandomSampler,SubsetRandomSampler
-from torch.utils.data.dataloader import default_collate
+
 import resource
 rlimit = resource.getrlimit(resource.RLIMIT_NOFILE)
 resource.setrlimit(resource.RLIMIT_NOFILE, (2048, rlimit[1]))
