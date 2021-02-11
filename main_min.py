@@ -47,7 +47,7 @@ def forward_loss(output, target, trans_mat, index = None):
 
     return loss
 
-def set_model_pre(config):
+def set_model_min(config):
     # use resnet18 (pretrained with CIFAR-10). Only for the minimum implementation of HOC
     if config.pre_type == 'cifar':
         model = res_cifar.resnet18(pretrained=True)
@@ -61,7 +61,7 @@ def set_model_pre(config):
     return model
 
 
-def get_T_global(args, record, max_step = 501, T0 = None, p0 = None, lr = 0.1, NumTest = 50, all_point_cnt = 15000):
+def get_T_global_min(args, record, max_step = 501, T0 = None, p0 = None, lr = 0.1, NumTest = 50, all_point_cnt = 15000):
     total_len = sum([len(a) for a in record])
     origin_trans = torch.zeros(total_len, record[0][0]['feature'].shape[0])
     origin_label = torch.zeros(total_len).long()
@@ -130,7 +130,7 @@ if __name__ == "__main__":
     config.num_training_samples = num_training_samples
     config.num_testing_samples = num_testing_samples
 
-    model_pre = set_model_pre(config)
+    model_pre = set_model_min(config)
 
 
     train_dataloader_EF = torch.utils.data.DataLoader(train_dataset,
@@ -149,8 +149,10 @@ if __name__ == "__main__":
             record[label[i]].append({'feature': extracted_feature[i].detach().cpu(), 'index': index[i]})
 
     # minimal implementation of HOC (an example)
-    new_estimate_T, _ = get_T_global(config, record, max_step=301 if config.num_classes==100 else 1501, lr = 0.1)
-    print(f'The estimated T is {np.round(new_estimate_T*100,1)}')
+    new_estimate_T, _ = get_T_global_min(config, record, max_step=301 if config.num_classes==100 else 1501, lr = 0.1)
+    print(f'\n\n-----------------------------------------')
+    print(f'Estimation finished!')
+    print(f'The estimated T is {np.round(np.array(new_estimate_T*100),1)}')
     # The following code can print the error (matrix L11 norm) when the true T is given
     # estimate_error_2 = error(True_T, new_estimate_T)
     # print('---------New Estimate error: {:.6f}'.format(estimate_error_2))
