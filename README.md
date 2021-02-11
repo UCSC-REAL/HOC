@@ -32,7 +32,7 @@ export CUDA_VISIBLE_DEVICES=1 && nohup python -u main.py --pre_type image --data
 ```
 
 ## Real-world human-annotated CIFAR-10
-We collected them from Amazon Mechanical Turk (MTurk) and students at UC Santa Cruz in February 2020. We only collected one annotation for each image at the cost of ¢10 per image. The label file is availiable at ./data/noise_label_human.pt.
+We collected them from Amazon Mechanical Turk (MTurk) and students at UC Santa Cruz in February 2020. We only collected one annotation for each image at the cost of ¢10 per image. The label file is available at ./data/noise_label_human.pt.
 
 
 ## Minimal implementation of HOC
