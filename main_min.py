@@ -19,7 +19,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--pre_type", type=str, default='cifar')  # image, cifar
 parser.add_argument('--noise_rate', type = float, help = 'corruption rate, should be less than 1', default = 0.2)
 parser.add_argument('--noise_type', type = str, default='manual')#manual
-parser.add_argument('--dataset', type = str, help = 'cifar10, cifar100', default = 'cifar100')
+parser.add_argument('--dataset', type = str, help = 'cifar10, cifar100', default = 'cifar10')
 parser.add_argument('--seed', type=int, default=1, metavar='S', help='random seed (default: 1)')
 parser.add_argument('--G', type=int, default=50, help='num of rounds (parameter G in Algorithm 1)')
 parser.add_argument('--max_iter', type=int, default=1500, help='num of iterations to get a T')
