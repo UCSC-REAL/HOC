@@ -152,7 +152,7 @@ if __name__ == "__main__":
     new_estimate_T, _ = get_T_global_min(config, record, max_step=301 if config.num_classes==100 else 1501, lr = 0.1)
     print(f'\n\n-----------------------------------------')
     print(f'Estimation finished!')
-    print(f'The estimated T is {np.round(np.array(new_estimate_T*100),1)}')
+    print(f'The estimated T is \n{np.round(np.array(new_estimate_T*100),1)}')
     # The following code can print the error (matrix L11 norm) when the true T is given
     # estimate_error_2 = error(True_T, new_estimate_T)
     # print('---------New Estimate error: {:.6f}'.format(estimate_error_2))
