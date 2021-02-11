@@ -120,9 +120,7 @@ if __name__ == "__main__":
     torch.manual_seed(config.seed)
     np.random.seed(config.seed)
     random.seed(config.seed)
-    config.numLocal = 250
-    config.numNoisyGroup = 150
-    config.local = False
+
     
     # load dataset
     train_dataset,test_dataset,num_classes,num_training_samples, num_testing_samples = input_dataset(config.dataset,config.noise_type,config.noise_rate, transform=False, noise_file = config.label_file_path)
@@ -149,10 +147,10 @@ if __name__ == "__main__":
             record[label[i]].append({'feature': extracted_feature[i].detach().cpu(), 'index': index[i]})
 
     # minimal implementation of HOC (an example)
-    new_estimate_T, _ = get_T_global_min(config, record, max_step=301 if config.num_classes==100 else 1501, lr = 0.1)
+    new_estimate_T, _ = get_T_global_min(config, record, max_step=1501, lr = 0.1, NumTest = 10)
     print(f'\n\n-----------------------------------------')
     print(f'Estimation finished!')
-    print(f'The estimated T is \n{np.round(np.array(new_estimate_T*100),1)}')
+    print(f'The estimated T is \n{np.round(np.array(new_estimate_T),3)}')
     # The following code can print the error (matrix L11 norm) when the true T is given
     # estimate_error_2 = error(True_T, new_estimate_T)
     # print('---------New Estimate error: {:.6f}'.format(estimate_error_2))
