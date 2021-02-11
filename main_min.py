@@ -25,7 +25,7 @@ parser.add_argument('--G', type=int, default=50, help='num of rounds (parameter 
 parser.add_argument('--max_iter', type=int, default=1500, help='num of iterations to get a T')
 parser.add_argument("--local", default=False, action='store_true')
 parser.add_argument('--loss', type = str, help = 'ce, fw', default = 'fw')
-parser.add_argument('--label_file_path', type = str, help = './data/IDN_0.6_C10.pt', default = './data/IDN_0.6_C10.pt') 
+parser.add_argument('--label_file_path', type = str, help = 'the path of noisy labels', default = './data/noise_label_human.pt') 
 
 global GLOBAL_T_REAL
 GLOBAL_T_REAL = []
