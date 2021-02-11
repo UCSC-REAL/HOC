@@ -27,27 +27,7 @@ parser.add_argument("--local", default=False, action='store_true')
 parser.add_argument('--loss', type = str, help = 'ce, fw', default = 'fw')
 parser.add_argument('--label_file_path', type = str, help = 'the path of noisy labels', default = './data/noise_label_human.pt') 
 
-global GLOBAL_T_REAL
-GLOBAL_T_REAL = []
 
-
-
-
-def forward_loss(output, target, trans_mat, index = None):
-    # l_{forward}(y, h(x)) = l_{ce}(y, h(x) @ T)
-    outputs = F.softmax(output, dim=1)
-    if index is None:
-        outputs = outputs @ trans_mat
-    else:
-        outputs1 = outputs.view(outputs.shape[0] * outputs.shape[1],-1).repeat(1,outputs.shape[1])
-        T1 = trans_mat[index].view(outputs.shape[0] * trans_mat.shape[1], trans_mat.shape[2])
-        outputs = torch.sum((outputs1 * T1).view(outputs.shape[0],trans_mat.shape[1],trans_mat.shape[2]),1)
-
-    outputs = torch.log(outputs)
-    #loss = CE(outputs, target)
-    loss = F.cross_entropy(outputs,target)
-
-    return loss
 
 def set_model_min(config):
     # use resnet18 (pretrained with CIFAR-10). Only for the minimum implementation of HOC
