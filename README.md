@@ -1,6 +1,6 @@
 # Clusterability as an Alternative to Anchor Points When Learning with Noisy Labels
-This code is a PyTorch implementation of the paper "Clusterability as an Alternative to Anchor Points When Learning with Noisy Labels".
-https://arxiv.org/abs/2102.05291
+This code is a PyTorch implementation of the paper:
+[1] Zhaowei Zhu, Yiwen Song, and Yang Liu, "Clusterability as an Alternative to Anchor Points When Learning with Noisy Labels", https://arxiv.org/abs/2102.05291.
 
 ## Prerequisites
 Python 3.6.6
@@ -32,3 +32,11 @@ export CUDA_VISIBLE_DEVICES=1 && nohup python -u main.py --pre_type image --data
 
 ## Real-world human-annotated CIFAR-10
 We collected them from Amazon Mechanical Turk (MTurk) and students at UC Santa Cruz in February 2020. We collect one annotation for each image with a cost of ¢10 per image.
+
+
+## Minimal implementation of HOC
+G: the number of rounds needed to estimate the consensus probabilities (See details in Algorithm 1 [1])
+max_iter: the maximum number of iterations to get an estimate of T 
+```
+CUDA_VISIBLE_DEVICES=0 python main_min.py --G 50 --max_iter 1500
+```
