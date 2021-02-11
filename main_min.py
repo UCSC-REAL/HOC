@@ -21,6 +21,8 @@ parser.add_argument('--noise_rate', type = float, help = 'corruption rate, shoul
 parser.add_argument('--noise_type', type = str, default='manual')#manual
 parser.add_argument('--dataset', type = str, help = 'cifar10, cifar100', default = 'cifar100')
 parser.add_argument('--seed', type=int, default=1, metavar='S', help='random seed (default: 1)')
+parser.add_argument('--G', type=int, default=50, help='num of rounds (parameter G in Algorithm 1)')
+parser.add_argument('--max_iter', type=int, default=1500, help='num of iterations to get a T')
 parser.add_argument("--local", default=False, action='store_true')
 parser.add_argument('--loss', type = str, help = 'ce, fw', default = 'fw')
 parser.add_argument('--label_file_path', type = str, help = './data/IDN_0.6_C10.pt', default = './data/IDN_0.6_C10.pt') 
@@ -147,7 +149,7 @@ if __name__ == "__main__":
             record[label[i]].append({'feature': extracted_feature[i].detach().cpu(), 'index': index[i]})
 
     # minimal implementation of HOC (an example)
-    new_estimate_T, _ = get_T_global_min(config, record, max_step=1501, lr = 0.1, NumTest = 10)
+    new_estimate_T, _ = get_T_global_min(config, record, max_step=config.num_iter, lr = 0.1, NumTest = config.G)
     print(f'\n\n-----------------------------------------')
     print(f'Estimation finished!')
     print(f'The estimated T is \n{np.round(np.array(new_estimate_T),3)}')
