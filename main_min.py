@@ -149,7 +149,7 @@ if __name__ == "__main__":
             record[label[i]].append({'feature': extracted_feature[i].detach().cpu(), 'index': index[i]})
 
     # minimal implementation of HOC (an example)
-    new_estimate_T, _ = get_T_global_min(config, record, max_step=config.num_iter, lr = 0.1, NumTest = config.G)
+    new_estimate_T, _ = get_T_global_min(config, record, max_step=config.max_iter, lr = 0.1, NumTest = config.G)
     print(f'\n\n-----------------------------------------')
     print(f'Estimation finished!')
     print(f'The estimated T is \n{np.round(np.array(new_estimate_T),3)}')
