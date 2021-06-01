@@ -273,3 +273,26 @@ def count_y(KINDS, feat_cord, label, cluster_sum):
         cnt[2][label[x1]][label[min_dis_id[x1]]][label[min_dis_id2[x1]]] += 1
 
     return cnt
+
+def count_2nn_acc(KINDS, feat_cord, label, cluster_sum):
+    # feat_cord = torch.tensor(final_feat)
+    cnt = [[] for _ in range(3)]
+    cnt[0] = torch.zeros(KINDS)
+    cnt[1] = torch.zeros(KINDS, KINDS)
+    cnt[2] = torch.zeros(KINDS, KINDS, KINDS)
+    feat_cord = feat_cord.cpu().numpy()
+    dist = distCosine(feat_cord, feat_cord)
+    max_val = np.max(dist)
+    am = np.argmin(dist,axis=1)
+    for i in range(cluster_sum):
+        dist[i][am[i]] = 10000.0 + max_val
+    min_dis_id = np.argmin(dist,axis=1)
+    for i in range(cluster_sum):
+        dist[i][min_dis_id[i]] = 10000.0 + max_val
+    min_dis_id2 = np.argmin(dist,axis=1)
+    for x1 in range(cluster_sum):
+        cnt[0][label[x1]] += 1
+        cnt[1][label[x1]][label[min_dis_id[x1]]] += 1
+        cnt[2][label[x1]][label[min_dis_id[x1]]][label[min_dis_id2[x1]]] += 1
+
+    return cnt
