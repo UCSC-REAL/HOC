@@ -1,7 +1,11 @@
 # Clusterability as an Alternative to Anchor Points When Learning with Noisy Labels (ICML'21)
 This code is a PyTorch implementation of the paper:
 
-[1] Zhaowei Zhu, Yiwen Song, and Yang Liu, "Clusterability as an Alternative to Anchor Points When Learning with Noisy Labels," https://arxiv.org/abs/2102.05291.
+Zhaowei Zhu, Yiwen Song, and Yang Liu, "Clusterability as an Alternative to Anchor Points When Learning with Noisy Labels," https://proceedings.mlr.press/v139/zhu21e.html.
+
+# Demo
+
+http://peers.ai/
 
 ## Prerequisites
 Python 3.6.6
