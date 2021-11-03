@@ -1,4 +1,4 @@
-# Clusterability as an Alternative to Anchor Points When Learning with Noisy Labels
+# Clusterability as an Alternative to Anchor Points When Learning with Noisy Labels (ICML'21)
 This code is a PyTorch implementation of the paper:
 
 [1] Zhaowei Zhu, Yiwen Song, and Yang Liu, "Clusterability as an Alternative to Anchor Points When Learning with Noisy Labels," https://arxiv.org/abs/2102.05291.
@@ -40,4 +40,24 @@ G: the number of rounds needed to estimate the consensus probabilities (See deta
 max_iter: the maximum number of iterations to get an estimate of T 
 ```
 CUDA_VISIBLE_DEVICES=0 python main_min.py --G 50 --max_iter 1500
+```
+
+## Reference
+```
+
+@InProceedings{zhu2021clusterability,
+  title = 	 {Clusterability as an Alternative to Anchor Points When Learning with Noisy Labels},
+  author =       {Zhu, Zhaowei and Song, Yiwen and Liu, Yang},
+  booktitle = 	 {Proceedings of the 38th International Conference on Machine Learning},
+  pages = 	 {12912--12923},
+  year = 	 {2021},
+  editor = 	 {Meila, Marina and Zhang, Tong},
+  volume = 	 {139},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {18--24 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v139/zhu21e/zhu21e.pdf},
+  url = 	 {https://proceedings.mlr.press/v139/zhu21e.html}
+}
+
 ```
