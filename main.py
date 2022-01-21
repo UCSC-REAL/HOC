@@ -68,7 +68,7 @@ if __name__ == "__main__":
     config.local = False
     
     # load dataset
-    train_dataset_EF,test_dataset,num_classes,num_training_samples, num_testing_samples = input_dataset(config.dataset,config.noise_type,config.noise_rate, transform=False, noise_file = config.label_file_path)
+    train_dataset_EF,test_dataset,num_classes,num_training_samples, num_testing_samples = input_dataset(config.dataset,'clean', config.noise_rate, transform=False) # will load noise file later (in get_T_HOC)
     config.num_classes = num_classes
     config.num_training_samples = num_training_samples
     config.num_testing_samples = num_testing_samples
