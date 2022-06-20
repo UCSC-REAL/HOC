@@ -273,3 +273,21 @@ def count_y(KINDS, feat_cord, label, cluster_sum):
         cnt[2][label[x1]][label[min_dis_id[x1]]][label[min_dis_id2[x1]]] += 1
 
     return cnt
+
+def count_y_known2nn(KINDS, label_list, cluster_sum=None):
+
+    if cluster_sum is not None:
+        sample = np.random.choice(range(label_list.shape[0]), cluster_sum, replace=False)
+        label_list = label_list[sample]
+
+    cnt = [[] for _ in range(3)]
+    cnt[0] = torch.zeros(KINDS)
+    cnt[1] = torch.zeros(KINDS, KINDS)
+    cnt[2] = torch.zeros(KINDS, KINDS, KINDS)
+
+    for i in range(cluster_sum):
+        cnt[0][label_list[i][0]] += 1
+        cnt[1][label_list[i][0]][label_list[i][1]] += 1
+        cnt[2][label_list[i][0]][label_list[i][1]][label_list[i][2]] += 1
+
+    return cnt

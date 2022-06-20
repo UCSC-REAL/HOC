@@ -46,6 +46,19 @@ max_iter: the maximum number of iterations to get an estimate of T
 CUDA_VISIBLE_DEVICES=0 python main_min.py --G 50 --max_iter 1500
 ```
 
+## Run with three noisy labels
+Save your noisy labels to ./data/test.csv.
+Data format: N*3 matrix, where N is the number of instances. For example, a row [0,1,1] means three noisy labels for this instances are respectively 0, 1, and 1. 
+Label classes MUST be consecutive integers.
+```
+python3 main_knwon2nn.py
+```
+The result of the default test case is 
+```
+[[87.7 12.3]
+ [14.4 85.6]]
+ ```
+
 ## Reference
 ```
 
