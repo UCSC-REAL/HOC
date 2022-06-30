@@ -62,7 +62,10 @@ if __name__ == "__main__":
     np.random.seed(config.seed)
     random.seed(config.seed)
 
-    my_data = np.genfromtxt(config.data_path, delimiter=',')[1:].astype(int)
+    raw_data = np.genfromtxt(config.data_path, delimiter=',')[1:]
+    remove_nan = np.isnan(raw_data).sum(1).astype(bool)
+    my_data = raw_data[~remove_nan].astype(int)
+
     label_classes = np.unique(my_data.reshape(-1))
     print(f'Current label classes: {label_classes}')
     if np.min(label_classes) > 0:
