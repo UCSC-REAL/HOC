@@ -46,7 +46,7 @@ def forward_loss(output, target, trans_mat, index = None):
         T1 = trans_mat[index].view(outputs.shape[0] * trans_mat.shape[1], trans_mat.shape[2])
         outputs = torch.sum((outputs1 * T1).view(outputs.shape[0],trans_mat.shape[1],trans_mat.shape[2]),1)
 
-    outputs = torch.log(outputs)
+    # outputs = torch.log(outputs)
     #loss = CE(outputs, target)
     loss = F.cross_entropy(outputs,target)
 
