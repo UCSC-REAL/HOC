@@ -1,4 +1,14 @@
 # Clusterability as an Alternative to Anchor Points When Learning with Noisy Labels (ICML'21)
+
+**[Update 5/17/2023]** Hoc is a module of [Docta](https://github.com/Docta-ai/docta) now!
+- A doctor for your data
+- An advanced data-centric AI platform that offers a comprehensive range of services aimed at detecting and rectifying issues in your data.
+
+----------------
+
+This code is a PyTorch implementation of the [paper](https://arxiv.org/abs/2110.06283): Detecting Corrupted Labels Without Training a Model to Predict 
+
+
 This code is a PyTorch implementation of the paper:
 
 Zhaowei Zhu, Yiwen Song, and Yang Liu, "Clusterability as an Alternative to Anchor Points When Learning with Noisy Labels," https://proceedings.mlr.press/v139/zhu21e.html.
