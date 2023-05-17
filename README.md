@@ -6,8 +6,6 @@
 
 ----------------
 
-This code is a PyTorch implementation of the [paper](https://arxiv.org/abs/2110.06283): Detecting Corrupted Labels Without Training a Model to Predict 
-
 
 This code is a PyTorch implementation of the paper:
 
